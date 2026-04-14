@@ -1,0 +1,11 @@
+text,label
+"My internet connection fails every morning",technical_support
+"I was charged twice this month",billing
+"I want information about your premium plan",general_inquiry
+"This service is terrible and nobody answers",complaint
+"Please cancel my subscription immediately",cancellation
+"The application crashes when I upload a file",technical_support
+"Why is my invoice higher this month",billing
+"Can you explain how your service works",general_inquiry
+"I am very unhappy with the support I received",complaint
+"I no longer want to continue with the service",cancellation
