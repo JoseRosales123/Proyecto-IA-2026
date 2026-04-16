@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Tickets | Clasificador de Solicitudes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="card">
+            <div class="hero">
+                <p class="eyebrow">Mesa de ayuda inteligente</p>
+                <h1>Clasificador de Solicitudes</h1>
+                <p class="subtitle">
+                    Ingresa un ticket y el sistema predecirá automáticamente la categoría más probable.
+                </p>
+            </div>
+
+            <section class="examples">
+                <p class="examples-title">Ejemplos rápidos</p>
+                <div class="example-list">
+                    <button
+                        type="button"
+                        class="example-btn"
+                        data-subject="Cancel subscription"
+                        data-description="I want to cancel my subscription because I no longer need the service."
+                    >
+                        Cancelación
+                    </button>
+
+                    <button
+                        type="button"
+                        class="example-btn"
+                        data-subject="Refund request"
+                        data-description="I was charged twice. Please refund my payment."
+                    >
+                        Reembolso
+                    </button>
+
+                    <button
+                        type="button"
+                        class="example-btn"
+                        data-subject="Package delay"
+                        data-description="My package has not arrived yet and the delivery date has already passed."
+                    >
+                        Envío
+                    </button>
+
+                    <button
+                        type="button"
+                        class="example-btn"
+                        data-subject="Account access issue"
+                        data-description="I cannot log into my account and I need help resetting my access."
+                    >
+                        Cuenta
+                    </button>
+                </div>
+            </section>
+
+            <section class="form-grid">
+                <div class="field">
+                    <label for="ticketId">Ticket ID</label>
+                    <input id="ticketId" type="text" readonly>
+                </div>
+
+                <div class="field">
+                    <label for="ticketSubject">Asunto</label>
+                    <input
+                        id="ticketSubject"
+                        type="text"
+                        placeholder="Ejemplo: Cancel subscription"
+                    >
+                </div>
+
+                <div class="field field-full">
+                    <label for="ticketText">Descripción de la solicitud</label>
+                    <textarea
+                        id="ticketText"
+                        placeholder="Describe el problema del cliente..."
+                    ></textarea>
+                    <small class="helper-text">Tip: usa frases claras. Puedes presionar Ctrl + Enter para clasificar.</small>
+                </div>
+            </section>
+
+            <div class="actions">
+                <button id="predictBtn" type="button" class="btn btn-primary">Clasificar solicitud</button>
+                <button id="clearBtn" type="button" class="btn btn-secondary">Limpiar</button>
+            </div>
+
+            <div id="statusMessage" class="status hidden"></div>
+
+            <section id="resultBox" class="result hidden">
+                <div class="result-header">
+                    <div>
+                        <p class="result-label">Resultado del ticket</p>
+                        <h2 id="predictedLabel">-</h2>
+                        <p class="result-code">Código interno: <span id="predictedCategory">-</span></p>
+                    </div>
+
+                    <div class="badge" id="categoryBadge">-</div>
+                </div>
+
+                <div class="ticket-summary">
+                    <div class="summary-item">
+                        <span class="summary-title">Ticket</span>
+                        <span id="resultTicketId">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-title">Asunto</span>
+                        <span id="resultSubject">-</span>
+                    </div>
+                </div>
+
+                <div class="confidence-box">
+                    <h3>Clases más probables</h3>
+                    <div id="confidenceList" class="confidence-list"></div>
+                </div>
+
+                <details>
+                    <summary>Ver tokens procesados</summary>
+                    <p id="tokensResult"></p>
+                </details>
+
+                <details>
+                    <summary>Ver puntajes crudos del modelo</summary>
+                    <pre id="scoresResult"></pre>
+                </details>
+            </section>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
