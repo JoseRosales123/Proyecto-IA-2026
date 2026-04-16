@@ -22,18 +22,24 @@ MODEL_PATH = MODEL_DIR / MODEL_FILENAME
 # =========================
 # COLUMNAS DEL DATASET
 # =========================
-TEXT_COLUMN = "text"
-LABEL_COLUMN = "label"
+TEXT_COLUMN = "instruction"
+LABEL_COLUMN = "category"
 
 # =========================
 # CLASES DEL PROYECTO
 # =========================
 VALID_CLASSES = [
-    "technical_support",
-    "billing",
-    "general_inquiry",
-    "complaint",
-    "cancellation",
+    "ACCOUNT",
+    "CANCEL",
+    "CONTACT",
+    "DELIVERY",
+    "FEEDBACK",
+    "INVOICE",
+    "ORDER",
+    "PAYMENT",
+    "REFUND",
+    "SHIPPING",
+    "SUBSCRIPTION",
 ]
 
 # =========================
